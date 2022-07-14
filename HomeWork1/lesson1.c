@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 11
+#define N 15
 
 
 void array_print(int Arr[N][N])
@@ -119,6 +119,13 @@ int main()
     printf("Third exercise:\n");
     third();
     printf("Fourth exercise:\n");
-    fourth();
+    if (N%2 != 0)
+    {
+        fourth();
+    }
+    else
+    {
+        printf("\nnumber must be odd\n");
+    }
     return 0;
 }
