@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define N 10
 #define BUF 20
@@ -12,9 +13,18 @@ struct Person
     char LastName[BUF];
 };
 
-void AddPerson()
+void AddPerson(struct Person *ptr)
 {
+    struct Person person1;
 
+    printf("\nWrite first name:%s", person1.FirstName);
+    printf("\nWrite last name:%s", person1.LastName);
+    printf("\nWrite first name:%d", person1.Number);
+
+    // for(int i = 0; i < N; i++)
+    // {
+
+    // }
 }
 
 void RemovePerson()
@@ -22,9 +32,52 @@ void RemovePerson()
 
 }
 
-void FindPerson()
+int FindPersonByFirstName(struct Person *ptr)
 {
+    char firstName[BUF] = {0};
+    printf("\nWrite the first name to search:\n");
+    scanf("%s", firstName);
+    for(int i = 0; i < N; i++)
+    {
+        if(strcmp(ptr->FirstName, firstName) == 0)
+        {
+            printf("First Name: %s\t Last Name: %s\t Number: %d\n", ptr->FirstName, ptr->LastName, ptr->Number);
+            return i;
+        }
+    }
+    return -1;
+}
 
+int FindPersonByLastName(struct Person *ptr)
+{
+    char lastName[BUF] = {0};
+    printf("\nWrite the last name to search:\n");
+    scanf("%s", lastName);
+    for(int i = 0; i < N; i++)
+    {
+        if(strcmp(ptr->LastName, lastName) == 0)
+        {
+            printf("First Name: %s\t Last Name: %s\t Number: %d\n", ptr->FirstName, ptr->LastName, ptr->Number);
+            return i;
+        }
+    }
+    return -1;
+}
+
+int FindPersonByNumber(struct Person *ptr)
+{
+    int number = 0;
+    printf("\nWrite the number to search:\n");
+    scanf("%d", &number);
+    for(int i = 0; i < N; i++)
+    {
+        if(ptr->Number = number)
+        {
+            printf("First Name: %s\t Last Name: %s\t Number: %d\n", ptr->FirstName, ptr->LastName, ptr->Number);
+            return i;
+        }
+    }
+    return -1;
 }
 
 void ViewPersons(struct Person *ptr)
@@ -39,20 +92,20 @@ void ViewPersons(struct Person *ptr)
 int main(void)
 {    
     int menuItem;
-    struct Person persons[N];
+    struct Person persons[N] = {0};
     struct Person *ptr = &persons[0]; 
 
-    for(int i = 0; i < N; i++)
-    {
-        // for(int j = 0; j < BUF; j++)
-        // {
-        //     persons[i].FirstName[j] = '_';
-        //     persons[i].LastName[j] = '_';
-        // }
-        persons[i].FirstName[0] = '_';
-        persons[i].LastName[0] = '_';        
-        persons[i].Number = -1;
-    }       
+    // for(int i = 0; i < N; i++)
+    // {
+    //     // for(int j = 0; j < BUF; j++)
+    //     // {
+    //     //     persons[i].FirstName[j] = '_';
+    //     //     persons[i].LastName[j] = '_';
+    //     // }
+    //     persons[i].FirstName[0] = '_';
+    //     persons[i].LastName[0] = '_';        
+    //     persons[i].Number = -1;
+    // }       
     //printf("%lu", sizeof(persons[0]));
     while (menuItem != 5)
     {
